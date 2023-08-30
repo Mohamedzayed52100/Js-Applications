@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TestController extends Controller
 {
@@ -19,7 +20,8 @@ class TestController extends Controller
     }
 
     public function index(){
-        echo $this->id;
+    if(Gate::allows('categories.view'))
+    //Gate::authorize('categories.view');
         return view('silder');
     }
 }

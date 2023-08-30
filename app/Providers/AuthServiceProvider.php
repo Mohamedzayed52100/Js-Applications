@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+ use Illuminate\Support\Facades\Gate;
+
+ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('categories.view' , function(){
+
+
+            return false;
+
+        });
+        Gate::define('categories.create' , function($user){
+
+        });
+        Gate::define('categories.update' , function($user){
+
+        });
     }
 }
